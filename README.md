@@ -13,29 +13,27 @@ _Out of the box you get_:
 * Good guide material to code bot of your own
 * Data persistence for mongodb (either via provided docker service or your own)
 
-## How to Use
+## How to Use / Set up
 
 1. Install Node.js (7.6 ver or newer) / NPM package manager for your machine
-2. Clone repository if you haven't done so yet `git clone https://github.com/mindaugaskasp/discord-music-bot.git` or just download it as a ZIP
-3. Set up configuration data in `configs/app.json` file (youtube API token, Discord Application token, Owner ID(s), listen-moe radio etc)
+2. Clone/Download repository if you haven't done so yet `git clone https://github.com/mindaugaskasp/discord-music-bot.git` or just download it as a ZIP
+3. Set up app configuration data in `configs/app.json` file (youtube API token, Discord Application token, Owner ID(s), listen-moe radio etc)
 4. Set up database configuration data in `configs/database.json`
 5. Open terminal and change your working directory to project root (e.g. `cd <PathToProjectRoot>`) and run `npm install` in the terminal
 6. In terminal run `npm run debug` - which basically will start `debug` script defined in `package.json`, run `npm run prod` for production.
-7. Add bot to your discord guild by using link `https://discordapp.com/oauth2/authorize?client_id=<ClientID>&permissions=0&scope=bot`, where `<clientID>` is your Discord Application client ID of the application whose token you've set in `app.json` file
-8. Confirm that application has started without any errors (look for `Logged In!` text in terminal)
-9. Use command `<prefix>help` to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
 
-## How to Use - Docker Edition
+**Skip [6th] this step if you want to run app via docker**
 
+## How to Use / Set up - Docker Edition (extends How to Use / above instructions)
 1. Install Docker & Docker Compose for your machine
-2. Clone or download repository as ZIP and open terminal and change your working directory to cloned/downloaded project root
-3. Set up configuration data in `configs/app.json` file (youtube API token, Discord Application token, Owner ID(s), listen-moe radio etc)
-4. Set up database configuration data in `configs/database.json`
-5. Run `docker-compose run --build` in terminal to build image & run container. If you see `Logged In!` in terminal window. Your bot has started without any problems.
-6. (Optional): Run `docker-compose down` to shut down container instance. Refer to docker-compose manual for more info on docker command usage.
-7. Add bot to your discord guild by using link `https://discordapp.com/oauth2/authorize?client_id=<ClientID>&permissions=0&scope=bot`, where `<clientID>` is your Discord Application client ID of the application whose token you've set in `app.json` file.
-8. Confirm that application has started without any errors (look for `Logged In!` text in terminal)
-9. Use command `<prefix>help` to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
+2. Run `docker-compose run --build` in terminal to build image & run container. If you see `Logged In!` in terminal window. Your bot has started without any problems.
+
+## Final Steps
+Once you are done setting up the application, follow these steps to confirm you haven't encountered any issues.
+
+1. Add bot to your discord guild by using link `https://discordapp.com/oauth2/authorize?client_id=<ClientID>&permissions=0&scope=bot`, where `<clientID>` is your Discord Application client ID of the application whose token you've set in `app.json` file
+2. Confirm that application has started without any errors (look for `Logged In!` text in terminal)
+3. Use command `<prefix>help` to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
 
 ## User Guide
 

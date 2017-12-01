@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const Util = require('discord-helpers/util');
 
 /**
- * Command responsible for retrieving tracks via youtube data API and saving to memory
+ * Command responsible for migrating default database data. Should be run only once, since it completely resets all data.
  * @type {module.SearchCommand}
  */
 module.exports = class MigrateCommand extends Command {
