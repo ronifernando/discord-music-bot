@@ -4,14 +4,13 @@ Free, open source repo containing music playback code, clone/fork/contribute as 
 _Out of the box you get_:
 
 * Multiple Guild music playback support
-* Performance - music data is kept in memory, which means rapid music playback
-* No functional overhead
+* Performance - music data is kept in memory (map) and is saved only for preserving state (map - db sync)
 * Docker deployment support
 * Event based player implementation - making it easier to maintain & extend code
 * Listen.moe J-POP Radio support
 * Automatic event loading - easy to add/remove any Discord event code
 * Good guide material to code bot of your own
-* Data persistence for mongodb (either via provided docker service or your own)
+* Data persistence for mongodb (either via provided docker service or your own database server)
 
 ## How to Use / Set up
 
@@ -33,7 +32,8 @@ Once you are done setting up the application, follow these steps to confirm you 
 
 1. Add bot to your discord guild by using link `https://discordapp.com/oauth2/authorize?client_id=<ClientID>&permissions=0&scope=bot`, where `<clientID>` is your Discord Application client ID of the application whose token you've set in `app.json` file
 2. Confirm that application has started without any errors (look for `Logged In!` text in terminal)
-3. Use command `<prefix>help` to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
+3. Use command `<prefix>help` (default: .help) to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
+4. Use command `<prefix>migrate` (default .migrate) to migrate default database data
 
 ## User Guide
 
