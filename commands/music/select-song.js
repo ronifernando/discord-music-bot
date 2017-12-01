@@ -49,7 +49,7 @@ module.exports = class SelectSongCommand extends Command {
                     for (let selectedIndex of selection)
                         if (parseInt(selectedIndex) === index+1) {
                             addedToQueue++;
-                            this.client.music.loadTrack(searches[index], msg.guild);
+                            this.client.music.loadTrack(searches[index], msg.guild, msg.author.id);
                         }
             }
 

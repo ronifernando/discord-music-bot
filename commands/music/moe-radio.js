@@ -7,7 +7,7 @@ module.exports = class MoeRadioCommand extends Command {
             aliases: ['moe', 'listen-moe'],
             group: 'music',
             memberName: 'moe-radio',
-            description: 'Plays Listen.moe JPOP radio stream',
+            description: 'Plays Listen.moe J-POP radio stream',
             examples: ['moe', 'listen-moe', 'moe-radio'],
             guildOnly: true,
             throttling: {

@@ -13,8 +13,11 @@ module.exports = class RemoveCommand extends Command {
             args:[
                 {
                     key: 'number',
-                    prompt: 'Enter valid track number in the queue. Enter `0` if you want to delete `ALL` tracks in music queue.',
-                    type: 'integer',
+                    prompt: 'Enter valid track number in the queue. Enter `all` if you want to delete `ALL` tracks in music queue.',
+                    type: 'string',
+                    validate: number => {
+                        return parseInt(number) || number.toLowerCase() === 'all';
+                    }
                 }
             ]
         });
@@ -30,9 +33,9 @@ module.exports = class RemoveCommand extends Command {
      * @param msg
      * @returns {Promise.<Message|Message[]>}
      */
-    run(msg, args) {
+    async run(msg, args) {
         try {
-            this.client.music.removeTrack(msg.guild, args.number)
+            await this.client.music.removeTrack(msg.guild, args.number)
         } catch (e) {
             console.log(e);
             return msg.say('Something went horribly wrong! Please try again later.');

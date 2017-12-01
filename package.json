@@ -35,7 +35,10 @@
   },
   "homepage": "https://github.com/mindaugaskasp/discord-music-bot#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "bufferutil": "^3.0.2",
+    "discord-mongo": "github:mindaugaskasp/discord-mongo-wrappers#master",
+    "discord-helpers": "github:mindaugaskasp/discord-helpers#alt/data-persistence",
     "discord.js": "^11.2.1",
     "discord.js-commando": "github:Gawdl3y/discord.js-commando#11.2",
     "fluent-ffmpeg": "^2.1.2",
@@ -48,7 +51,6 @@
     "uws": "^8.14.1",
     "validator": "^9.1.1",
     "ytdl-core": "^0.16.2",
-    "axios": "^0.15.3",
-    "discord-helpers": "github:mindaugaskasp/discord-helpers#master"
+    "mongodb": "^2.2.24"
   }
 }
