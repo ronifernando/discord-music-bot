@@ -1,16 +1,18 @@
 # discord-music-bot
 Free, open source repo containing music playback code, clone/fork/contribute as you wish.
 
+`<prefix>` indicates a bot command prefix set in `configs/app.json` file, by default it is `.` (dot)
+
 _Out of the box you get_:
 
 * Multiple Guild music playback support
 * Performance - music data is kept in memory (map) and is saved only for preserving state (map - db sync)
 * Docker deployment support
-* Event based player implementation - making it easier to maintain & extend code
+* Event based music/radio player implementation - making it easier to maintain & extend code
 * Listen.moe J-POP Radio support
 * Automatic event loading - easy to add/remove any Discord event code
 * Good guide material to code bot of your own
-* Data persistence for mongodb (either via provided docker service or your own database server)
+* Data persistence support for mongodb (either via provided docker service or your own database server)
 
 ## How to Use / Set up
 
@@ -21,7 +23,7 @@ _Out of the box you get_:
 5. Open terminal and change your working directory to project root (e.g. `cd <PathToProjectRoot>`) and run `npm install` in the terminal
 6. In terminal run `npm run debug` - which basically will start `debug` script defined in `package.json`, run `npm run prod` for production.
 
-**Skip [6th] this step if you want to run app via docker**
+**Skip [6th] step if you want to run app via docker, else skip to Final Steps part**
 
 ## How to Use / Set up - Docker Edition (extends How to Use / above instructions)
 1. Install Docker & Docker Compose for your machine
@@ -32,8 +34,8 @@ Once you are done setting up the application, follow these steps to confirm you 
 
 1. Add bot to your discord guild by using link `https://discordapp.com/oauth2/authorize?client_id=<ClientID>&permissions=0&scope=bot`, where `<clientID>` is your Discord Application client ID of the application whose token you've set in `app.json` file
 2. Confirm that application has started without any errors (look for `Logged In!` text in terminal)
-3. Use command `<prefix>help` (default: .help) to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
-4. Use command `<prefix>migrate` (default .migrate) to migrate default database data
+3. Use command `<prefix>help` (default: `.help`) to view commands available in your discord guild, `<prefix>` is custom command prefix you can set in `configs/app.json` file. All commands must start by declaring the prefix first. E.g. If we have default prefix set as `!` then all commands would proceed with it and be initiated like so `!help` or `!join` etc. 
+4. Use command `<prefix>migrate` (default `.migrate`) to migrate default database data
 
 ## User Guide
 
@@ -55,11 +57,10 @@ $ Use command `<prefix>stash [page=1]` to view music search stash list. Similarl
 * Use command `<prefix>ping` to check bot / discord api latency
 * Use command `<prefix>seek [interval]` to seek music player to specific time, e.g. `<prefix>seek 1:40` would seek music player to 1 minute 40 seconds time
 
-`<prefix>` indicates a bot command prefix set in `configs/app.json` file, by default it is `.` (dot)
-
 ## Dependencies
 
 * Node.js 7.6<
 * discord.js & discord.js-commando
 * sqlite for discord.js-commando default data persistence (to store your custom prefix etc)
+* mongodb 3.4 version for data persistence
 * ..check out `package.json` for more info.
