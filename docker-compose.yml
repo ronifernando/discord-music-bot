@@ -7,6 +7,13 @@ services:
         dockerfile: ./Dockerfile
       ports:
         - 8060:8080
-#      volumes:
-#        - ./:/usr/src/app
       restart: always
+    database:
+      container_name: discord_database
+      image: mongo:3.4.2
+      restart: always
+      volumes:
+        - ../opt/mongodb:/data/db
+      ports:
+        - 27044:27017
+      command: mongod --auth
