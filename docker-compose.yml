@@ -8,6 +8,8 @@ services:
       ports:
         - 8060:8080
       restart: always
+      depends_on:
+        - database
     database:
       container_name: discord_database
       image: mongo:3.4.2
