@@ -9,7 +9,7 @@ services:
         - 8060:8080
       restart: always
       links:
-        - discord_database:database
+        - database:database
     database:
       container_name: discord_database
       image: mongo:3.4.2
