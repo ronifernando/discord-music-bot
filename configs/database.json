@@ -1,6 +1,6 @@
 {
-  "DB_HOST": "127.0.0.1",
-  "DB_PORT": "27044",
+  "DB_HOST": "database",
+  "DB_PORT": "27017",
   "DB_NAME": "discord",
   "DB_USERNAME": "root",
   "DB_PASSWORD": "root",
