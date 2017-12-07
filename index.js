@@ -30,7 +30,7 @@ const client = new CommandoClient({
 
    // custom objects are attached to the client
   client.config = config;
-  client.moe_radio = new MoePlayer(new ListenMoe(config.listen_moe.username, config.listen_moe.password), config.listen_moe);
+  client.moe_radio = new MoePlayer(new ListenMoe(config.listen_moe.username, config.listen_moe.password), config.listen_moe, repository);
   client.registry
     .registerDefaultTypes()
     .registerGroups([
