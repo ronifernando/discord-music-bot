@@ -16,7 +16,7 @@ module.exports = class MoeRadioCommand extends Command {
             },
             clientPermissions: ['CONNECT', 'SPEAK'],
         });
-
+        this.channels = new Map();
         try {
             this._initListeners();
         } catch (e) {
@@ -30,6 +30,7 @@ module.exports = class MoeRadioCommand extends Command {
      */
     async run(msg) {
         try {
+            this.channels.set(msg.guild.id, msg.channel.id);
             if (! msg.guild.voiceConnection) return msg.say('I am not in voice channel yet to play radio.');
             this.client.moe_radio.stream(msg.guild);
         } catch (e) {
@@ -43,7 +44,6 @@ module.exports = class MoeRadioCommand extends Command {
         let playingMessage = null;
         this.client.moe_radio.on('streaming', async (embed, guild) => {
             let channel = playingMessage && playingMessage.channel ? guild.channels.get(playingMessage.channel.id) : guild.channels.find('type', 'text');
-            if (playingMessage && playingMessage.deletable) playingMessage.delete();
             if (channel && embed !== null) {
                 playingMessage = (await channel.send('', {embed: embed}));
                 this.client.moe_radio.savePlayerMessage(guild, playingMessage);
@@ -51,7 +51,7 @@ module.exports = class MoeRadioCommand extends Command {
         });
 
         this.client.moe_radio.on('stream', async (text, guild) => {
-            let channel = guild.channels.find('type', 'text');
+            let channel = guild.channels.get(this.channels.get(guild.id)) || guild.channels.find('type', 'text');
             if (channel && text) (await channel.send(text)).delete(20000);
             else console.log(`No text channel found for guild ${guild.id}/${guild.name} to display radio stream text.`)
         });

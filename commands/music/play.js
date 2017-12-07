@@ -16,7 +16,7 @@ module.exports = class PlayCommand extends Command {
             guildOnly: true,
             clientPermissions: ['CONNECT', 'SPEAK'],
         });
-
+        this.channels = new Map();
         try {
             this._initListeners();
         } catch (e) {
@@ -31,6 +31,7 @@ module.exports = class PlayCommand extends Command {
      */
     run(msg) {
         try {
+            this.channels.set(msg.guild.id, msg.channel.id);
             this.client.music.play(msg.guild);
         } catch (e) {
             console.log(e);
@@ -41,21 +42,13 @@ module.exports = class PlayCommand extends Command {
     _initListeners()
     {
         this.client.music.on('playing', async (track, guild) => {
-            let playingMessage = this.client.music.messages.get(guild.id);
-            if (playingMessage && playingMessage.deletable) {
-                try {
-                    playingMessage.delete();
-                } catch (e) {
-
-                }
-            }
-            let channel = guild.channels.find('type', 'text');
+            let channel = guild.channels.get(this.channels.get(guild.id)) || guild.channels.find('type', 'text');
             if (channel) this.client.music.savePlayerMessage(guild, (await channel.send('', {embed: this.client.music.getInfo(guild)})));
             else console.log(`No text channel found for guild ${guild.id}/${guild.name} to display music playing embed.`)
         });
 
         this.client.music.on('play', (text, guild) => {
-            let channel = guild.channels.find('type', 'text');
+            let channel = guild.channels.get(this.channels.get(guild.id)) || guild.channels.find('type', 'text');
             if (channel) channel.send(text);
             else console.log(`No text channel found for guild ${guild.id}/${guild.name} to display music playing embed.`)
         });
