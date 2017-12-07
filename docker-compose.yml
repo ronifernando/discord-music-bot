@@ -20,6 +20,6 @@ services:
         - 27044:27017
         # Note: By default mongodb has no admin / root user defined
         # for this reason you will have to enter mongodb (remove --auth flag to enter without auth first) instance within container docker exec -it discord_database /bin/bash
-        # and create admin user manually (use discord; db.createUser(username, pwd, roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]));
+        # and create admin user manually db.createUser
         # since containers restart automatically, after successful root user creation the container should log in without any problems
       command: mongod --auth
