@@ -1,16 +1,16 @@
 {
   "bot": {
     "name": "Musico",
-    "token": "",
+    "token": "NDY5OTAzMzg0MTc0OTE5Njgx.DjOhCw.JwMcY3vXPcImrGUD7wn7G56Nr7s",
     "owners": [
-      ""
+      "384752980878032918"
     ],
     "delete_cmd_messages": true,
-    "default_cmd_prefix": ".",
-    "game": "use .help command"
+    "default_cmd_prefix": "]",
+    "game": "use ]help command"
   },
   "youtube": {
-    "token": "",
+    "token": "AIzaSyDwRpsHfaXnA3WEvufufQsfVWyDalqsj8c",
     "base_url": "https://www.youtube.com"
   },
   "listen_moe": {
